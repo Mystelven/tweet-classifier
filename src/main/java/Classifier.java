@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * We get those probabilities as (> 0) if positive, (< 0) if negative.
  *
  * And then finally, the whole array is returned
+ * @author Valentin Montmirail (http://valentin-montmirail.com/)
  */
 public class Classifier {
 
