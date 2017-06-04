@@ -28,10 +28,16 @@ public class Main {
         String[] textToClassify;
 
         /* Example data to show that it works. 2 strongly positives, 1 strongly negative. */
-        textToClassify = new String[] {"awesome stuff !", "very nice !!", "I'm so sad"};
+        textToClassify = new String[] {
+                "awesome stuff !",
+                "very nice !!",
+                "It is so sad",
+                "it suck",
+                "pretty good"
+        };
 
         if(args.length > 0) {
-            TweetRequest tweetRequest = new TweetRequest(args[1]);
+            TweetRequest tweetRequest = new TweetRequest(args[0]);
             textToClassify = tweetRequest.getTweets();
         }
 
@@ -54,6 +60,7 @@ public class Main {
 
         /* We then display a lot of mathematical informations about those data */
         System.out.println(new MathematicalExploitation(positivesPercentages));
+        System.out.println("\n");
 
         return 0;
     }

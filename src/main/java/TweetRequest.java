@@ -34,7 +34,8 @@ public class TweetRequest {
 
             } catch (TwitterException te) {
 
-                System.out.println("Failed to search tweets: " + te.getMessage());
+                System.err.println("\n");
+                System.err.println("Failed to search tweets: " + te.getMessage());
                 System.exit(-1);
             }
 
