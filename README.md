@@ -18,6 +18,8 @@ The file is looking as follow:
 
 Then from the command `mvn compile install exec:java -Dexec.mainClass=Main` you can execute the program.
 
+The already trained classifier is : https://app.monkeylearn.com/main/classifiers/cl_qkjxv9Ly/tab/tree-sandbox/
+
 # Credits
 
 - [Twitter4J](http://twitter4j.org/en/index.html)
