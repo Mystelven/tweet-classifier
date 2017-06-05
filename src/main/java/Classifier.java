@@ -22,6 +22,9 @@ public class Classifier {
 
     private MonkeyLearnResponse response;
 
+    private ArrayList<Double> positivesPercentages;
+    private ArrayList<Double> neutralPercentages;
+
     /**
      * We call the classifier on an array of String
      * @param textList the array of data that will be classified.
@@ -44,16 +47,14 @@ public class Classifier {
     }
 
     /**
-     * We will extract from the JSON array,
-     * all the probabilities and on which label they are classified.
-     *
-     * @return the probabilities from the classified data.
+     * We will extract from the JSON array, all the probabilities and on which label they are classified.
      */
-    public ArrayList<Double> getClassification() {
+    public void setClassification() {
 
         ArrayList<String> values = new ArrayList<String>();
 
-        ArrayList<Double> positivesPourcentages = new ArrayList<Double>();
+        positivesPercentages = new ArrayList<Double>();
+        neutralPercentages   = new ArrayList<Double>();
 
         /* We extract all the JSONElement as just String easily parsed. */
         for (int i = 0; i < response.arrayResult.size(); ++i) {
@@ -83,27 +84,41 @@ public class Classifier {
 
                 /* When it is positive, we add positively the probability */
                 case "positive":
-                    positivesPourcentages.add(proba);
+                    positivesPercentages.add(proba);
                     break;
 
                 /* When it is negative, we add negatively the probability */
                 case "negative":
-                    positivesPourcentages.add(-proba);
+                    positivesPercentages.add(-proba);
                     break;
 
                 /* We don't consider the neutral here, but it could be used. */
                 default:
-                    System.err.println("neutral at : "+proba);
+                    neutralPercentages.add(proba);
                     break;
             }
 
         }
 
         /* We sort all the probabilites */
-        positivesPourcentages.sort((a, b) -> Double.compare(b, a));
+        positivesPercentages.sort((a, b) -> Double.compare(b, a));
+        neutralPercentages.sort((a,b) -> Double.compare(b,a));
+    }
 
-        /* Then we return the probabilities */
-        return positivesPourcentages;
+    /**
+     * Return the list of positives percentages ('>0') and the list of negatives percentages ('<0')
+     * @return the list of positives percentages ('>0') and the list of negatives percentages ('<0')
+     */
+    public ArrayList<Double> getPositivesPercentages() {
+        return positivesPercentages;
+    }
+
+    /**
+     * Return the list of neutral percentages
+     * @return the list of neutral percentages
+     */
+    public ArrayList<Double> getNeutralPercentages() {
+        return neutralPercentages;
     }
 
 }

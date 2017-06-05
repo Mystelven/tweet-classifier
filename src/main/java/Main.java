@@ -48,10 +48,12 @@ public class Main {
          * It return then the classification.
          * - If > 0 then the string is classified as 'positive'
          * - If < 0 then the string is classified as 'negative'
-         * - Classification of 'neutral' are performed also but not stored (displayed on stderr)
-         * The value itself is a probability
+         *
+         * If in neutralPercentages, then the tweet was neutral
          */
-        ArrayList<Double> positivesPercentages = classifier.getClassification();
+        classifier.setClassification();
+        ArrayList<Double> positivesPercentages = classifier.getPositivesPercentages();
+        ArrayList<Double> neutralPercentages   = classifier.getNeutralPercentages();
 
         /* We then display the Array of probabilities to perform mathematical operations on it. */
         System.out.println("\n");
@@ -59,7 +61,10 @@ public class Main {
         System.out.println("\n");
 
         /* We then display a lot of mathematical informations about those data */
-        System.out.println(new MathematicalExploitation(positivesPercentages));
+
+        MathematicalExploitation math = new MathematicalExploitation(classifier);
+
+        System.out.println(math);
         System.out.println("\n");
 
         return 0;
