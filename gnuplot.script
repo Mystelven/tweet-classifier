@@ -3,8 +3,8 @@ set output 'analysis.ps'
 
 set title "Analysis of Tweets"
 
-plot "./positive.txt" title "Positive Tweet"
-replot "./negative.txt" title "Negative Tweet"
+plot "./negative.txt" title "Negative Tweet"
+replot "./positive.txt" title "Positive Tweet"
 replot "./neutral.txt" title "Neutral Tweet"
 
 exit
