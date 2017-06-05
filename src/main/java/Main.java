@@ -67,6 +67,8 @@ public class Main {
         System.out.println(math);
         System.out.println("\n");
 
+        math.toFiles();
+
         return 0;
     }
 }
