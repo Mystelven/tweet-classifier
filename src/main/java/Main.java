@@ -27,18 +27,28 @@ public class Main {
         /* The data that we will classify */
         String[] textToClassify;
 
-        /* Example data to show that it works. 2 strongly positives, 1 strongly negative. */
+        /* Example data to show that it works. 3 strongly positives, 2 strongly negatives. */
         textToClassify = new String[] {
                 "awesome stuff !",
                 "very nice !!",
                 "It is so sad",
-                "it suck",
+                "it sucks",
                 "pretty good"
         };
 
         if(args.length > 0) {
+
+            /* The Twitter query must be the first argument of the method */
             TweetRequest tweetRequest = new TweetRequest(args[0]);
+
+            /* We receive the tweets in a String way. */
             textToClassify = tweetRequest.getTweets();
+
+            if(args.length > 1 && "-printTweets".compareTo(args[1]) == 0) {
+                for(String tweet : textToClassify) {
+                    System.out.println(tweet);
+                }
+            }
         }
 
         /* We then call our Classifier on those data */
