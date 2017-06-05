@@ -1,6 +1,10 @@
+set terminal postscript enhanced color
+set output 'analysis.ps'
 
 set title "Analysis of Tweets"
 
 plot "./positive.txt" title "Positive Tweet"
 replot "./negative.txt" title "Negative Tweet"
 replot "./neutral.txt" title "Neutral Tweet"
+
+exit
