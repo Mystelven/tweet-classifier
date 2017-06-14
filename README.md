@@ -16,6 +16,8 @@ The file is looking as follow:
     oauth.accessToken       = ********
     oauth.accessTokenSecret = ********
 
+You also need to configure the token of your MonkeyLearn account in a file named `tokenClassifier'.
+
 Then from the command `mvn compile install exec:java -Dexec.mainClass=Main` you can execute the program.
 
 And with the command `mvn compile install exec:java -Dexec.mainClass=Main -Dexec.args="Trump"`

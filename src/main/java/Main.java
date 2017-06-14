@@ -63,7 +63,6 @@ public class Main {
          */
         classifier.setClassification();
         ArrayList<Double> positivesPercentages = classifier.getPositivesPercentages();
-        ArrayList<Double> neutralPercentages   = classifier.getNeutralPercentages();
 
         /* We then display the Array of probabilities to perform mathematical operations on it. */
         System.out.println("\n");

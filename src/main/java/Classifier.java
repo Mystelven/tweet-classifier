@@ -3,6 +3,9 @@ import com.monkeylearn.MonkeyLearn;
 import com.monkeylearn.MonkeyLearnException;
 import com.monkeylearn.MonkeyLearnResponse;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +20,7 @@ import java.util.ArrayList;
  */
 public class Classifier {
 
-    private static final String token    = "eb05a0294231995a27e8ca4f07c0a9da9da918b5";
+    private static String token = "";
     private static final String moduleId = "cl_qkjxv9Ly";
 
     private MonkeyLearnResponse response;
@@ -30,6 +33,14 @@ public class Classifier {
      * @param textList the array of data that will be classified.
      */
     public Classifier(String[] textList) {
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("tokenClassifier.txt"));
+            token = bufferedReader.readLine();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            System.exit(-3);
+        }
 
         try {
 
